@@ -6,6 +6,7 @@ import { formatMXN } from '../app/money'
 import { Navbar } from '../components/Navbar'
 import { useCart } from '../app/useCart'
 import { GradientVisual } from '../components/GradientVisual'
+import { useSeo } from '../hooks/useSeo'
 
 export function AdminPage() {
   const { products, addProduct, updateProduct, deleteProduct } = useCatalog()
@@ -39,6 +40,13 @@ export function AdminPage() {
 
   const [optimizing, setOptimizing] = useState(false)
   const currentGradient = formData.image?.kind === 'gradient' ? formData.image : null
+
+  useSeo({
+    title: 'Admin | MUNEK SUPLEMENTOS',
+    description: 'Panel administrativo interno de MUNEK SUPLEMENTOS.',
+    path: '/admin',
+    robots: 'noindex, nofollow',
+  })
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]

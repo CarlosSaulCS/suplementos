@@ -8,6 +8,7 @@ import { CartDrawer } from '../components/CartDrawer'
 import { CategoryMenu } from '../components/CategoryMenu'
 import { SearchModal } from '../components/SearchModal'
 import type { Product, Variant } from '../app/catalog'
+import { useSeo } from '../hooks/useSeo'
 
 // Configuración - Edita estos valores para tu negocio
 const WHATSAPP_NUMBER = '522462094321' // Número de WhatsApp (con código de país)
@@ -50,6 +51,13 @@ export function CheckoutPage() {
 
   const shipping = cart.totalItems >= FREE_SHIPPING_ITEMS_THRESHOLD ? 0 : SHIPPING_COST
   const total = cart.subtotal + shipping
+
+  useSeo({
+    title: 'Checkout | MUNEK SUPLEMENTOS',
+    description: 'Finaliza tu pedido de suplementos deportivos en MUNEK SUPLEMENTOS.',
+    path: '/checkout',
+    robots: 'noindex, nofollow',
+  })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

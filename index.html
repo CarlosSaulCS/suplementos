@@ -12,13 +12,14 @@
     <meta name="author" content="Muñek Suplementos" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://muneksuplementos.com" />
+    <link rel="preload" as="image" href="/belcast.jpg" fetchpriority="high" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://muneksuplementos.com" />
     <meta property="og:title" content="MUÑEK SUPLEMENTOS | Suplementos Deportivos Premium" />
     <meta property="og:description" content="Tienda online de suplementos deportivos premium. Proteína, creatina, pre-entreno y más. Envío gratis +$999." />
-    <meta property="og:image" content="/splementos.png" />
+    <meta property="og:image" content="https://muneksuplementos.com/splementos.png" />
     <meta property="og:locale" content="es_MX" />
     
     <!-- Twitter -->
@@ -26,7 +27,7 @@
     <meta name="twitter:url" content="https://muneksuplementos.com" />
     <meta name="twitter:title" content="MUÑEK SUPLEMENTOS | Suplementos Deportivos Premium" />
     <meta name="twitter:description" content="Tienda online de suplementos deportivos premium. Envío gratis +$999." />
-    <meta name="twitter:image" content="/splementos.png" />
+    <meta name="twitter:image" content="https://muneksuplementos.com/splementos.png" />
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#1a1a1a" />
@@ -48,12 +49,26 @@
         "addressCountry": "MX"
       },
       "priceRange": "$$",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "09:00",
-        "closes": "20:00"
-      }
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "12:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday"],
+          "opens": "13:00",
+          "closes": "20:00"
+        }
+      ]
     }
     </script>
   </head>

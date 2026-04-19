@@ -8,6 +8,7 @@ import { Navbar } from '../components/Navbar'
 import { CategoryMenu } from '../components/CategoryMenu'
 import { SearchModal } from '../components/SearchModal'
 import { GradientVisual } from '../components/GradientVisual'
+import { useSeo } from '../hooks/useSeo'
 
 export function ProductPage() {
   const { productId } = useParams<{ productId: string }>()
@@ -19,9 +20,17 @@ export function ProductPage() {
   
   const product = products.find(p => p.id === productId)
   
-  const [selectedVariantId, setSelectedVariantId] = useState(product?.variants[0]?.id ?? '')
+  const [selectedVariantChoice, setSelectedVariantChoice] = useState(product?.variants[0]?.id ?? '')
   const [quantity, setQuantity] = useState(1)
   const [addedToCart, setAddedToCart] = useState(false)
+
+  useSeo({
+    title: product ? `${product.name} | MUNEK SUPLEMENTOS` : 'Producto | MUNEK SUPLEMENTOS',
+    description: product
+      ? `${product.name} de ${product.brand}. Compra suplementos deportivos premium con envio a todo Mexico.`
+      : 'Detalle de producto en MUNEK SUPLEMENTOS.',
+    path: `/producto/${productId ?? ''}`,
+  })
 
   if (!product) {
     return (
@@ -44,7 +53,10 @@ export function ProductPage() {
     )
   }
 
-  const selectedVariant = product.variants.find((variant) => variant.id === selectedVariantId) ?? product.variants[0] ?? null
+  const activeVariantId = product.variants.some((variant) => variant.id === selectedVariantChoice)
+    ? selectedVariantChoice
+    : (product.variants[0]?.id ?? '')
+  const selectedVariant = product.variants.find((variant) => variant.id === activeVariantId) ?? product.variants[0] ?? null
 
   const handleAddToCart = () => {
     if (selectedVariant && selectedVariant.inStock) {
@@ -137,9 +149,9 @@ export function ProductPage() {
                   <button
                     key={variant.id}
                     type="button"
-                    onClick={() => setSelectedVariantId(variant.id)}
+                    onClick={() => setSelectedVariantChoice(variant.id)}
                     className={`px-6 py-3 rounded-xl border font-bold text-sm transition-all duration-300 ${
-                      selectedVariant?.id === variant.id
+                      activeVariantId === variant.id
                         ? 'border-accent bg-accent text-white shadow-lg shadow-accent/20'
                         : 'border-white/10 glass hover:border-white/30 text-white/60'
                     } ${!variant.inStock ? 'opacity-30 line-through' : ''}`}

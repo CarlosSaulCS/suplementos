@@ -22,6 +22,31 @@ E‑commerce de suplementos con estética tipo “galería de arte” y un efect
 - Variantes reales (tamaños/sabores) y control de cantidad
 - Carrito en drawer con persistencia en `localStorage`
 
+## Preparado para Produccion Basica
+
+- SEO base en rutas principales (home, producto, legales)
+- `public/robots.txt` con reglas para bloquear `/admin` y `/checkout`
+- `public/sitemap.xml` con URLs publicas principales
+- Fallback SPA para Netlify via `public/_redirects`
+
+## Despliegue y Enrutamiento SPA
+
+Esta app usa React Router con rutas como `/producto/:id`, `/logistica-pro`, `/terminos`, `/privacidad`.
+Para evitar errores 404 al refrescar una ruta interna, debes configurar rewrite a `index.html` en tu hosting:
+
+- Netlify: ya incluido con `public/_redirects`
+- Vercel: agrega un rewrite global de `/(.*)` a `/index.html`
+- Nginx: `try_files $uri /index.html;`
+- Apache: regla de rewrite a `index.html` para rutas no existentes
+
+## Checklist de Indexacion
+
+- Verificar dominio final en `VITE_SITE_URL` (si aplica)
+- Subir sitio y confirmar que `https://tu-dominio.com/sitemap.xml` responda 200
+- Registrar propiedad en Google Search Console
+- Enviar sitemap y solicitar indexacion de home + paginas legales
+- Validar que `/admin` y `/checkout` aparezcan con `noindex`
+
 ## Branding
 
 El ícono/mark actual es un placeholder SVG generado (ver `public/icon.svg` y `src/components/BrandMark.tsx`).

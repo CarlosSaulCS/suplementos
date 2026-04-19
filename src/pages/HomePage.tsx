@@ -9,6 +9,7 @@ import { ProductCarousel } from '../components/ProductCarousel'
 import { useCart } from '../app/useCart'
 import { useCatalog } from '../app/useCatalog'
 import { type Category } from '../app/catalog'
+import { useSeo } from '../hooks/useSeo'
 
 const CATEGORIES: Category[] = [
   'Proteína',
@@ -56,6 +57,12 @@ export function HomePage() {
     if (!activeCategory) return products
     return products.filter((p) => p.category === activeCategory)
   }, [activeCategory, products])
+
+  useSeo({
+    title: 'MUNEK SUPLEMENTOS | Tienda de Suplementos Deportivos en Mexico',
+    description: 'Tienda online de suplementos deportivos premium. Proteina, creatina, pre-entreno y mas con envio a todo Mexico.',
+    path: '/',
+  })
 
   return (
     <div className="min-h-dvh">

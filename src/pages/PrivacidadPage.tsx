@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useSeo } from '../hooks/useSeo'
 
 export function PrivacidadPage() {
+  useSeo({
+    title: 'Aviso de Privacidad | MUNEK SUPLEMENTOS',
+    description: 'Conoce como MUNEK SUPLEMENTOS protege y usa los datos personales de sus clientes.',
+    path: '/privacidad',
+  })
+
   return (
     <main className="min-h-dvh bg-bg text-white px-6 py-16">
       <div className="max-w-5xl mx-auto">

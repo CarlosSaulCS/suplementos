@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useSeo } from '../hooks/useSeo'
 
 export function LogisticaPage() {
+  useSeo({
+    title: 'Logistica Pro | MUNEK SUPLEMENTOS',
+    description: 'Consulta tiempos de envio, costos y cobertura de entregas de MUNEK SUPLEMENTOS.',
+    path: '/logistica-pro',
+  })
+
   return (
     <main className="min-h-dvh bg-bg text-white px-6 py-16">
       <div className="max-w-5xl mx-auto">

@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useSeo } from '../hooks/useSeo'
 
 export function TerminosPage() {
+  useSeo({
+    title: 'Terminos y Condiciones | MUNEK SUPLEMENTOS',
+    description: 'Revisa los terminos y condiciones de compra de MUNEK SUPLEMENTOS.',
+    path: '/terminos',
+  })
+
   return (
     <main className="min-h-dvh bg-bg text-white px-6 py-16">
       <div className="max-w-5xl mx-auto">
