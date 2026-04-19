@@ -79,10 +79,10 @@ export function SearchModal({ open, onClose, onSelectProduct }: Props) {
           (open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none')
         }
       >
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="glass-dark rounded-2xl shadow-2xl overflow-hidden text-white">
           {/* Search input */}
-          <div className="flex items-center gap-4 p-4 border-b border-hairline">
-            <svg className="w-5 h-5 text-muted shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="flex items-center gap-4 p-4 border-b border-white/10">
+            <svg className="w-5 h-5 text-white/50 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
@@ -91,12 +91,12 @@ export function SearchModal({ open, onClose, onSelectProduct }: Props) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Buscar productos, marcas..."
-              className="flex-1 text-lg outline-none placeholder:text-muted/50"
+              className="flex-1 text-lg bg-transparent text-white outline-none placeholder:text-white/40"
             />
             <button
               type="button"
               onClick={handleClose}
-              className="text-xs text-muted hover:text-fg px-2 py-1 rounded bg-gray-100"
+              className="text-xs text-white/60 hover:text-white px-2 py-1 rounded bg-white/10"
             >
               ESC
             </button>
@@ -105,19 +105,19 @@ export function SearchModal({ open, onClose, onSelectProduct }: Props) {
           {/* Results */}
           <div className="max-h-[60vh] overflow-y-auto">
             {query.trim().length === 0 ? (
-              <div className="p-8 text-center text-muted">
-                <svg className="w-12 h-12 mx-auto mb-4 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="p-8 text-center text-white/60">
+                <svg className="w-12 h-12 mx-auto mb-4 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <p>Escribe para buscar productos</p>
               </div>
             ) : results.length === 0 ? (
-              <div className="p-8 text-center text-muted">
+              <div className="p-8 text-center text-white/60">
                 <p>No se encontraron resultados para "{query}"</p>
               </div>
             ) : (
               <div className="p-2">
-                <p className="px-3 py-2 text-xs text-muted">
+                <p className="px-3 py-2 text-xs text-white/50">
                   {results.length} resultado{results.length !== 1 ? 's' : ''}
                 </p>
                 {results.map((product) => (
@@ -125,7 +125,7 @@ export function SearchModal({ open, onClose, onSelectProduct }: Props) {
                     key={product.id}
                     type="button"
                     onClick={() => handleSelect(product)}
-                    className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors text-left"
+                    className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-white/10 transition-colors text-left"
                   >
                     <div className="w-14 h-14 rounded-lg shrink-0 overflow-hidden flex items-center justify-center relative">
                       {product.image.kind === 'url' ? (
@@ -135,13 +135,13 @@ export function SearchModal({ open, onClose, onSelectProduct }: Props) {
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs text-muted">{product.brand}</p>
-                      <p className="font-medium truncate">{product.name}</p>
+                      <p className="text-xs text-white/60">{product.brand}</p>
+                      <p className="font-medium truncate text-white">{product.name}</p>
                       <p className="text-sm text-accent font-semibold">
                         {formatMXN(product.variants[0]?.price ?? 0)}
                       </p>
                     </div>
-                    <span className="text-xs text-muted bg-gray-100 px-2 py-1 rounded">
+                    <span className="text-xs text-white/70 bg-white/10 px-2 py-1 rounded">
                       {product.category}
                     </span>
                   </button>

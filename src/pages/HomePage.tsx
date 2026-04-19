@@ -85,10 +85,13 @@ export function HomePage() {
         {/* Carousel Background - Positioned below safe area */}
         <div className="absolute inset-0 z-0">
           {BANNER_IMAGES.map((img, idx) => (
-            <div
+            <img
               key={img}
+              src={img}
+              alt=""
               className={`absolute inset-x-0 top-26 bottom-0 bg-cover bg-position-[center_top] transition-all duration-10000 ease-out ${idx === currentBanner ? 'opacity-100' : 'opacity-0'}`}
               aria-hidden="true"
+              draggable={false}
             />
           ))}
         </div>
